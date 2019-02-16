@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Bitter', serif;
+}
+
+.main-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: radial-gradient(rgb(219, 77, 77), rgb(147, 38, 38));
+  overflow: hidden;
+}
+
+.main-text-container, .blur-text-1-container, .blur-text-2-container {
+  white-space: nowrap;
+  opacity: 0;
+  transition: 2s;
+}
+
+.main-text {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  color: white;
+  opacity: 0;
+  font-size: 28px;
+  animation: randBlurLight 6s infinite,
+             randOpacityLight 6s infinite,
+             randMoveLight 6s infinite,
+             glitch-anim-text 3s infinite;
+  transition: 1s;
+}
+
+.blur-text-1 {
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  color: white;
+  opacity: 0;
+  filter: blur(4px);
+  font-size: 200px;
+  font-weight: bold;
+  animation: randBlurMid 7s infinite,
+             randOpacityMid 6s infinite,
+             randMoveMid 20s infinite,
+             randSizeMid 20s infinite,
+             glitch-anim-text 4s 2s infinite;
+  transition: 1s;
+}
+
+.blur-text-2 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  color: white;
+  opacity: 0;
+  filter: blur(8px);
+  font-size: 600px;
+  font-weight: bold;
+  animation: randBlurFat 6s infinite,
+             randOpacityFat 5s infinite,
+             randMoveFat 20s infinite,
+             randSizeFat 20s infinite;
+  transition: 1s;
+}
+
+/*BLUR*/
+
+@keyframes randBlurLight {
+  0%    { filter: blur(0px); }
+  6%    { filter: blur(1px); }
+  8%    { filter: blur(0px); }
+  60%   { filter: blur(0px); }
+  63%   { filter: blur(1px); }
+  70%   { filter: blur(0px); }
+  100%  { filter: blur(0px); }
+}
+
+@keyframes randBlurMid {
+  0%    { filter: blur(4px); }
+  6%    { filter: blur(6px); }
+  8%    { filter: blur(4px); }
+  60%   { filter: blur(4px); }
+  63%   { filter: blur(7px); }
+  70%   { filter: blur(1px); }
+  100%  { filter: blur(4px); }
+}
+
+@keyframes randBlurFat {
+  0%    { filter: blur(8px); }
+  15%   { filter: blur(8px); }
+  26%   { filter: blur(12px); }
+  28%   { filter: blur(8px); }
+  70%   { filter: blur(8px); }
+  73%   { filter: blur(10px); }
+  80%   { filter: blur(6px); }
+  100%  { filter: blur(8px); }
+}
+
+/*OPACITY*/
+
+@keyframes randOpacityLight {
+  0%    { opacity: 1; }
+  6%    { opacity: 0.8; }
+  24%   { opacity: 1; }
+  60%   { opacity: 1; }
+  63%   { opacity: 0.9; }
+  70%   { opacity: 1; }
+  100%  { opacity: 1; }
+}
+
+@keyframes randOpacityMid {
+  0%    { opacity: 0.1; }
+  6%    { opacity: 0.2; }
+  24%   { opacity: 0.1; }
+  60%   { opacity: 0.1; }
+  63%   { opacity: 0.05; }
+  70%   { opacity: 0.1; }
+  100%  { opacity: 0.1; }
+}
+
+@keyframes randOpacityFat {
+  0%    { opacity: 0.02; }
+  6%    { opacity: 0.04; }
+  14%   { opacity: 0.02; }
+  67%   { opacity: 0.02; }
+  69%   { opacity: 0; }
+  75%   { opacity: 0.02; }
+  100%  { opacity: 0.02; }
+}
+
+/*TRANSLATE*/
+
+@keyframes randMoveLight {
+  0%    { transform: translate(0px, 0px); }
+  6%    { transform: translate(2px, 2px); }
+  8%    { transform: translate(0px, 0px); }
+  60%   { transform: translate(0px, 0px); }
+  63%   { transform: translate(-4px, 0px); }
+  70%   { transform: translate(0px, 0px); }
+  100%  { transform: translate(0px, 0px); }
+}
+
+/*SIZE*/
+
+@keyframes randSizeMid {
+  0%    { transform: scale(1); }
+  4%    { transform: scale(1.01); }
+  10%   { transform: scale(1); }
+  70%   { transform: scale(1)); }
+  73%   { transform: scale(1.04); }
+  85%   { transform: scale(1); }
+  100%  { transform: scale(1); }
+}
+
+@keyframes randSizeFat {
+  0%    { transform: scale(1); }
+  24%   { transform: scale(1.01); }
+  20%   { transform: scale(1); }
+  80%   { transform: scale(1)); }
+  83%   { transform: scale(1.04); }
+  95%   { transform: scale(1); }
+  100%  { transform: scale(1); }
+}
+
+/*GLITCH*/
+
+@keyframes glitch-anim-text {
+  0% {
+    transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1);
+    -webkit-clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
+    clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
+  }
+  2% {
+    -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+    clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+  }
+  4% {
+    -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+    clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+  }
+  5% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+    clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+  }
+  6% {
+    -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+    clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+  }
+  7% {
+    -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+    clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+  }
+  8% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+    clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+  }
+  9% {
+    -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+  }
+  9.9% {
+    transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1);
+  }
+  10%, 100% {
+    transform: translate3d(0,0,0) scale3d(1,1,1);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
